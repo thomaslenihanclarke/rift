@@ -1,0 +1,126 @@
+/*
+* Rift V1.0.4
+* Copyright 2018, Thomas Lenihan-Clarke
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 09/07/2018
+*/
+
+/* Variables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$total-columns: 0;
+$container-class: "rift-";
+$column-class: "column-";
+$offset-class: "offset-";
+$transitional-column-class: "tablet-column-";
+$transitional-offset-class: "tablet-offset-";
+$nest-class: "nest";
+$grid-list: (12,16);
+$max-container-width: 1440px;
+$container-padding: 3.0rem;
+$vertical-gutter: 3.0rem;
+$horizontal-gutter: 3.0rem;
+$transitional-start: 750px;
+$transitional-end: 1100px;
+$breakpoint-list:   (non-transitional, "only screen and (min-width: #{$transitional-start})"),
+                    (transitional, "only screen and (min-width: #{$transitional-start}) and (max-width: #{$transitional-end})");
+
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+[class^='#{$container-class}'] {
+    position: relative;
+    max-width: $max-container-width;
+    width: 100%;
+    margin: 0 auto;
+    padding: $container-padding 0;
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+    &.no-max {
+        max-width: none;
+        width: 100%;
+    }
+    &.no-gutters {
+        padding: 0;
+        %no-gutter-column-styles {
+            padding: 0;
+        }
+    }
+}
+
+%column-styles {
+    float: left;
+    width: 100%;
+    &:not(:last-child) {
+        padding-bottom: $vertical-gutter;
+    }
+}
+
+/* Mixins
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@mixin no-gutter-column-list {
+    [class^='#{$column-class}'], [class*=' #{$column-class}'] { @extend %no-gutter-column-styles; }
+}
+@mixin column-list {
+    [class^='#{$column-class}'], [class*=' #{$column-class}'] { @extend %column-styles; }
+}
+
+/* Includes
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@include no-gutter-column-list;
+@include column-list;
+
+/* Generator
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@each $label, $query in $breakpoint-list {
+
+    @media #{$query} {
+
+        @if $label == non-transitional {
+            .#{$container-class} {
+                padding: $container-padding 0;
+            }
+            %column-styles {
+                padding: 0 ($horizontal-gutter / 2) $vertical-gutter ($horizontal-gutter / 2);
+            }
+            &.#{$nest-class} {
+                padding: 0;
+            }
+        } @elseif $label == transitional {
+            $column-class: $transitional-column-class;
+            $offset-class: $transitional-offset-class;
+        }
+
+        @each $total-columns in $grid-list {
+
+            .#{$container-class}#{$total-columns} {
+                @for $i from 1 through $total-columns {
+                    &.#{$column-class}#{$i} {
+                        width: 100% / ($total-columns / $i);
+                    }
+                    @if $i < $total-columns {
+                        &.#{$offset-class}#{$i} {
+                            margin-left: 100% / ($total-columns / $i);
+                        }
+                    }
+                }
+                @if $label == transitional {
+                    &.#{$offset-class}0 {
+                        margin-left: 0;
+                    }
+                }
+            }
+            
+        }
+
+    }
+    $column-class: "column-";
+    $offset-class: "offset-";
+}
