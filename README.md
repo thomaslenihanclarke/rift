@@ -26,6 +26,8 @@ These variables allow you to define your build specific grid requirements:
 | $transitional-end          | Define the media query max-width attribute of your transitional class.        |
 | $breakpoint-list           | This is declared for use in the grid generator, do not amend.                 |
 | $total-columns             | This is declared for use in the grid generator, do not amend.                 |
+| $loop-column-class         | This is declared for use in the grid generator, do not amend.                 |
+| $loop-offset-class         | This is declared for use in the grid generator, do not amend.                 |
 
 Once your settings have been updated compile the rift.scss file, call it in the head of your html and your grid is ready to use.
 

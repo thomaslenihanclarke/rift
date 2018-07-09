@@ -1,5 +1,5 @@
 /*
-* Rift V1.0.4
+* Rift V1.0.5
 * Copyright 2018, Thomas Lenihan-Clarke
 * Free to use under the MIT license.
 * http://www.opensource.org/licenses/mit-license.php
@@ -22,9 +22,11 @@ $vertical-gutter: 3.0rem;
 $horizontal-gutter: 3.0rem;
 $transitional-start: 750px;
 $transitional-end: 1100px;
-$breakpoint-list:   (non-transitional, "only screen and (min-width: #{$transitional-start})"),
+$breakpoint-list:   (non-transitional, "only screen and (min-width: #{$transitional-start})"), 
                     (transitional, "only screen and (min-width: #{$transitional-start}) and (max-width: #{$transitional-end})");
 $total-columns: 0;
+$loop-column-class: $column-class;
+$loop-offset-class: $offset-class;
 
 /* Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -94,25 +96,25 @@ $total-columns: 0;
                 padding: 0;
             }
         } @elseif $label == transitional {
-            $column-class: $transitional-column-class;
-            $offset-class: $transitional-offset-class;
+            $loop-column-class: $transitional-column-class;
+            $loop-offset-class: $transitional-offset-class;
         }
 
         @each $total-columns in $grid-list {
 
             .#{$container-class}#{$total-columns} {
                 @for $i from 1 through $total-columns {
-                    &.#{$column-class}#{$i} {
+                    &.#{$loop-column-class}#{$i} {
                         width: 100% / ($total-columns / $i);
                     }
                     @if $i < $total-columns {
-                        &.#{$offset-class}#{$i} {
+                        &.#{$loop-offset-class}#{$i} {
                             margin-left: 100% / ($total-columns / $i);
                         }
                     }
                 }
                 @if $label == transitional {
-                    &.#{$offset-class}0 {
+                    &.#{$loop-offset-class}0 {
                         margin-left: 0;
                     }
                 }
@@ -121,6 +123,6 @@ $total-columns: 0;
         }
 
     }
-    $column-class: "column-";
-    $offset-class: "offset-";
+    $loop-column-class: $column-class;
+    $loop-offset-class: $offset-class;
 }
