@@ -9,7 +9,6 @@
 /* Variables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$total-columns: 0;
 $container-class: "rift-";
 $column-class: "column-";
 $offset-class: "offset-";
@@ -25,6 +24,7 @@ $transitional-start: 750px;
 $transitional-end: 1100px;
 $breakpoint-list:   (non-transitional, "only screen and (min-width: #{$transitional-start})"),
                     (transitional, "only screen and (min-width: #{$transitional-start}) and (max-width: #{$transitional-end})");
+$total-columns: 0;
 
 /* Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
