@@ -2,7 +2,9 @@
 Rift is a highly customisable Sass grid generator, built to be lightweight, legacy browser compatible and flexible to even the most demanding of column layouts.
 
 ## How it works
-Rift uses padding to seperate grids and columns, using padding as opposed to margin allows you to maximise the power of relative units and make it easy to maintain matching vertical and horizontal padding. Like most grids the columns are nested in a container and f you want to place columns inside an existing column you can easily reset the padding using the nest class. All column content, except for nested columns, should be placed within a module div in order to correctly display the gutters.
+Rift uses padding to seperate grids and columns, using padding as opposed to margin allows you to maximise the power of relative units and make it easy to maintain matching vertical and horizontal padding. 
+
+Like most grids the columns are nested in a container and if you want to place columns inside an existing column you can easily reset the padding using the nest class. All column content, except for nested columns, should be placed within a module div in order to correctly display the gutters.
 
 ## Variables
 These variables allow you to define your build specific grid requirements:
