@@ -41,19 +41,19 @@ Here is an example using a variety of the available column settings to show how 
 
 ```html
 <div class="rift-12">
-    <div class="column-3 offset-1 tablet-column-6 tablet-offset-0 nest">
-    	<div class="column-6 tablet-column-12">
-    		<div class="module">
-    			<p>1</p>
-    		</div>
-    	</div>
-    	<div class="column-6 tablet-column-12">
-    		<div class="module">
-    			<p>2</p>
-    		</div>
-    	</div>
-    </div>
-    <div class="column-6 offset-1 tablet-column-6 tablet-offset-0">
+	<div class="column-3 offset-1 tablet-column-6 tablet-offset-0 nest">
+		<div class="column-6 tablet-column-12">
+			<div class="module">
+				<p>1</p>
+			</div>
+		</div>
+		<div class="column-6 tablet-column-12">
+			<div class="module">
+				<p>2</p>
+			</div>
+		</div>
+	</div>
+	<div class="column-6 offset-1 tablet-column-6 tablet-offset-0">
 		<div class="module">
 			<p>3</p>
 		</div>
