@@ -55,7 +55,7 @@ Here is an example using a variety of the available column settings to show how 
 			</div>
 		</div>
 	</div>
-	<div class="column-6 offset-1 tablet-column-6 tablet-offset-0">
+	<div class="column-6 offset-1 tablet-offset-0">
 		<div class="module">
 			<p>3</p>
 		</div>
